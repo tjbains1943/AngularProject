@@ -1,4 +1,3 @@
-
 ### Install dependencies
 
 ```
@@ -9,12 +8,6 @@ npm install
 
 ```
 ng serve
-```
-
-### Run the JSON server (http://localhost:5000)
-
-```
-npm run server
 ```
 
 ### To build for production
