@@ -15,7 +15,9 @@ export class TaskItemComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.task)
+  }
 
   onDelete(task) {
     this.onDeleteTask.emit(task);
