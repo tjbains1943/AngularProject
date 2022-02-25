@@ -1,6 +1,19 @@
-header {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  width: 75%;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  padding: 16px 32px 0px 32px;
+  background: lightblue;
+  height: 100px;
+}
+
+.header-title {
+  padding-top: 15px;
 }
