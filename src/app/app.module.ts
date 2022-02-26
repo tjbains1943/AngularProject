@@ -48,6 +48,11 @@ const appRoutes: Routes = [
     MatPaginatorModule,
     MatSortModule
   ],
+  exports: [
+    MatFormFieldModule,
+    MatInputModule,
+  ],
+
   providers: [],
   bootstrap: [AppComponent],
 })

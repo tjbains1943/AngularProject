@@ -1,12 +1,17 @@
 <div class="header-container">
 <header class="header">
-  <div></div>
   <h1 class="header-title">{{ title }}</h1>
+  <div>
   <app-button
     *ngIf="hasRoute('/')"
     color="{{ showAddTask ? 'red' : 'green' }}"
     text="{{ showAddTask ? 'Close' : 'Add' }}"
     (btnClick)="toggleAddTask()"
   ></app-button>
+  <app-button
+    text="Export"
+   disabled
+  ></app-button>
+</div>
 </header>
 </div>

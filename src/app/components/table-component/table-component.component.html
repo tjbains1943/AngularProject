@@ -1,12 +1,10 @@
 <div >
-  <div class="form-control">
-    <label>Filter</label>
-  <input
-  type="text"
-  name="text"
-  id="filter"
-  placeholder="Filter"
-/>
+  <div class="filter-container">
+    <mat-form-field appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" 
+      placeholder="filter" #filter>
+    </mat-form-field>
   </div>
   <div>
   <table mat-table class="full-width-table" matSort aria-label="Elements">

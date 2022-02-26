@@ -6,3 +6,11 @@
 .mat-table {
   height: 800px;
 }
+
+.filter-container {
+  background: #424242;
+  margin-top: 15px;
+  padding: 16px;
+  color: white;
+  font-size: 24px;
+}

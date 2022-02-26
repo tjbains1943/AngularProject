@@ -17,7 +17,7 @@ export class TableComponentDataSource extends DataSource<Task> {
   data: Task[] = DATA;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
-
+  filter: string;
   constructor() {
     super();
   }

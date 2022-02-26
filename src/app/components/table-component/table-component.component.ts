@@ -15,7 +15,7 @@ export class TableComponentComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Task>;
   dataSource: TableComponentDataSource;
-
+  filter: string
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['title', 'project_owner', 'budget', 'division', 'status', 'created', 'modified'];
 
@@ -23,9 +23,20 @@ export class TableComponentComponent implements AfterViewInit {
     this.dataSource = new TableComponentDataSource();
   }
 
+  
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
+    this.dataSource.filter = this.filter
   }
 }
