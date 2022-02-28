@@ -1,47 +1,71 @@
 <div >
   <div class="filter-container">
-    <mat-form-field appearance="standard">
-      <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" 
-      placeholder="filter" #filter>
+    <mat-form-field *ngFor="let filter of filterSelectObj" style="margin-left: 15px;">
+      <mat-label>Filter {{filter.name}}</mat-label>
+      <select matNativeControl name="{{filter.columnProp}}" [(ngModel)]="filter.modelValue"
+        (change)="filterChange(filter,$event)">
+        <option value="">-- Select {{filter.name}} --</option>
+        <option [value]="item" *ngFor="let item of filter.options">{{item}}</option>
+      </select>
     </mat-form-field>
+    &nbsp;
+    <button mat-flat-button color="warn" (click)="resetFilters()">Reset</button>
   </div>
   <div>
   <table mat-table class="full-width-table" matSort aria-label="Elements">
     <ng-container matColumnDef="title">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
-      <td mat-cell *matCellDef="let task">     {{ task.title }}
+      <td mat-cell *matCellDef="let task">  <input  type="text" [value]="task.title" />  
       </td>
     </ng-container>
 
     <ng-container matColumnDef="division">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Division </th>
-      <td mat-cell *matCellDef="let task"> {{task.division}} </td>
+      <td mat-cell *matCellDef="let task">
+        <input  type="text" [value]="task.division" />   
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="project_owner">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Project Owner </th>
-      <td mat-cell *matCellDef="let task"> {{task.project_owner}} </td>
+      <td mat-cell *matCellDef="let task"> 
+        <input  type="text" [value]="task.project_owner" />   </td>
     </ng-container>
 
     <ng-container matColumnDef="budget">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Budget </th>
-      <td mat-cell *matCellDef="let task"> {{task.budget}} </td>
+      <td mat-cell *matCellDef="let task"> 
+        <input  type="text" [value]="task.budget" />   
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-      <td mat-cell *matCellDef="let task"> {{task.status}} </td>
+      <td mat-cell *matCellDef="let task"> 
+        <input  type="text" [value]="task.status" />   
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="created">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Created </th>
-      <td mat-cell *matCellDef="let task"> {{task.created}} </td>
+      <td mat-cell *matCellDef="let task">
+        <mat-form-field class="date-field">
+          <input matInput [matDatepicker]="picker" [placeholder]="task.created">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+       </td>
     </ng-container>
 
     <ng-container matColumnDef="modified">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Modified </th>
-      <td mat-cell *matCellDef="let task"> {{task.modified}} </td>
+      <td mat-cell *matCellDef="let task"> 
+        <mat-form-field class="date-field">
+          <input matInput [matDatepicker]="picker" [placeholder]="task.modified">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+         </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
